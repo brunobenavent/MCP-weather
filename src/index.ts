@@ -156,7 +156,7 @@ mcpServer.setRequestHandler(CallToolRequestSchema, async (request) => {
 
 // Servidor HTTP para Render
 const app = express();
-const port = process.env.PORT || 3000;
+const port = parseInt(process.env.PORT || '3000', 10);
 
 app.get('/', (req: Request, res: Response) => {
   res.json({ 
