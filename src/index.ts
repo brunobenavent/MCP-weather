@@ -1,9 +1,29 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
+import { createServer } from 'http';
 
 const NWS_API_BASE = "https://api.weather.gov";
 const USER_AGENT = "weather-app/1.0";
+
+
+
+const port = process.env.PORT || 3000;
+
+const server = createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ 
+    message: 'Weather MCP Server', 
+    status: 'running',
+    timestamp: new Date().toISOString()
+  }));
+});
+
+server.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
+});
+
+
 
 // Create server instance
 const server = new McpServer({
