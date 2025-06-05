@@ -8,7 +8,7 @@ import {
   ListToolsRequestSchema,
   McpError,
 } from '@modelcontextprotocol/sdk/types.js';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { z } from 'zod';
 
 // Esquemas de validación
@@ -158,7 +158,7 @@ mcpServer.setRequestHandler(CallToolRequestSchema, async (request) => {
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.json({ 
     message: 'Weather MCP Server is running',
     status: 'healthy',
@@ -166,7 +166,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/health', (req, res) => {
+app.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
