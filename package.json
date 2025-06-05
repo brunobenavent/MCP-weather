@@ -1,19 +1,20 @@
 {
   "name": "weather",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "build/index.js",
   "type": "module",
   "scripts": {
-    "start": "tsx src/index.ts",
-    "build": "tsc && chmod 755 build/index.js"
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "tsc && node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-   "bin": {
+  "bin": {
     "weather": "./build/index.js"
   },
   "files": [
     "build"
   ],
-
   "keywords": [],
   "author": "",
   "license": "ISC",
